@@ -14,7 +14,11 @@ namespace ConsoleApp51
 
         public string Memory { get; private set; }
 
-        public MyDate Date { get; private set; }
+        public int  Date { get; private set; }
+
+        List<Music> MusicList { get;set; }
+        
+            
     }
 
 

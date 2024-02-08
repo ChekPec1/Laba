@@ -1,5 +1,7 @@
 ﻿using ConsoleApp51;
-
+using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
+string music;
 void PrintGreen(string message)
 {
     ConsoleColor color = Console.ForegroundColor;
@@ -49,7 +51,9 @@ while (true)
    
     switch (Console.ReadLine())
     {
-        case "1": 
+        case "1":
+             void AddMusic();
+            break;
 
 
 
