@@ -9,11 +9,12 @@ namespace ConsoleApp51
 {
     public class MainServer
     {
-
-       
-
+        internal void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
-    
+
 }

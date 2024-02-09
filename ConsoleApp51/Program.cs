@@ -1,5 +1,6 @@
 ﻿using ConsoleApp51;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 
@@ -47,30 +48,33 @@ using System.Security.Cryptography.X509Certificates;
             Console.ReadKey();
             return;
         }
+ 
 
-        while (true)
-        {
-    switch (Console.ReadLine())
+    while (true)
     {
-        case "1":
-            AddMusic();
-            break;
+        switch (Console.ReadLine())
+        {
+            case "1":
+                AddMusic();
+                break;
             case "2":
-            DeliteMusic();
-            break;
-            
-            
+                DeleteMusic();
+                break;
+
+
+
+        }
 
     }
 
-        }
+       
 
 void AddMusic()
 {
     List<string> Music = new();
     List<int> Day = new();
     List<int> Mount = new();
-   
+    List<int> Id = new();
     try
     {
         PrintGreen("Введите название трека");
@@ -82,21 +86,45 @@ void AddMusic()
         PrintGreen("Какой сегодня месяц");
         int mount = Convert.ToInt32(Console.ReadLine());   
         Mount.Add(mount);
-
+       
 
     }
-    catch 
+    catch (Exception ex)
     {
-        
+        PrintRed(ex.Message);
+        Console.ReadKey();
+        return;
 
     }
       
    
 
 }
-void DeliteMusic()
-{
 
+
+ void DeleteMusic()
+{
+    PrintGreen("Выберите id трека который хотите удалить");
+    int Id = Convert.ToInt32(Console.ReadLine());
+    PrintRed($"Для подтверждения введите слово: удалить ");
+    string clear = Console.ReadLine();
+    if (clear ==  "удалить")
+    {
+
+        server.Delete(Id);
+        PrintRed("Удалено");
+    }
+    else
+    {
+        PrintRed("Не верно");
+        return;
+    }
     
+
+
+
+
+
+
 }
 
