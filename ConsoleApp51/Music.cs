@@ -12,11 +12,17 @@ namespace ConsoleApp51
 
         public int Id {  get; set; }
 
-        public string Memory { get; private set; }
-
         public int  Date { get; private set; }
 
-        List<Music> MusicList { get;set; }
+     public Music( int Id, string Memory, int Date)
+        {
+            MusicName = MusicName;
+            if(MusicName == null)
+            {
+
+            }
+            
+        }
         
             
     }

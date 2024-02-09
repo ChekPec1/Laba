@@ -9,22 +9,11 @@ namespace ConsoleApp51
 {
     public class MainServer
     {
-      
-        List<string> Music = new List<string>();
 
-        public void AddMusic()
-        {
-            string misic = Console.ReadLine();
-            try
-            {
-                Music.Add(AddMusic);
-            }
-            catch { }
-           
-        }
-
-
-
+       
 
     }
+
+
+    
 }
