@@ -71,21 +71,17 @@ using System.Security.Cryptography.X509Certificates;
 
 void AddMusic()
 {
-    List<string> Music = new();
-    List<int> Day = new();
-    List<int> Mount = new();
-    List<int> Id = new();
+   
     try
     {
         PrintGreen("Введите название трека");
         string music = Console.ReadLine();
-        Music.Add(music);
         PrintGreen("Какой сегодня день");
-        int day = Convert.ToInt32(Console.ReadLine());
-        Day.Add(day);
+        int day = Convert.ToInt32(Console.ReadLine());      
         PrintGreen("Какой сегодня месяц");
-        int mount = Convert.ToInt32(Console.ReadLine());   
-        Mount.Add(mount);
+        int month = Convert.ToInt32(Console.ReadLine());   
+        server.Add(new Music(day, month, music));
+        
        
 
     }

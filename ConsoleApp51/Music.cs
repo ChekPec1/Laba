@@ -13,6 +13,7 @@ namespace ConsoleApp51
         public int Id {  get; set; }
 
         public int  Date { get; private set; }
+        
 
      public Music( int Id, string Memory, int Date)
         {
