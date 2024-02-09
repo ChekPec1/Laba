@@ -21,7 +21,7 @@ namespace ConsoleApp51
             try
             {
                 string jsonContent = File.ReadAllText(_fail);
-                Musics = JsonConvert.DeserializeObject<List<Music>>(jsonContent);
+                Musics = JsonConverter.Desia<List<Music>>(jsonContent);
             }
         
         }
