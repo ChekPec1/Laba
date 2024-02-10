@@ -71,12 +71,14 @@ void MusicAdd()
     {
         PrintRed("Не правильно!");
     }
-    else
+    else 
     {
         avtors.Add(avtor);
         musics.Add(treak);
-        PrintGreen("Записано");
+        PrintRed("Добавленно");
     }
+    
+
 
 
 }
@@ -86,7 +88,7 @@ void MussicDelete()
     List<string> avtors = new();
     List<string> musics = new();
     PrintGreen("Выбери автора трека");
-   
+    PrintRed($"{avtors.ForEach}");
     
 
 
