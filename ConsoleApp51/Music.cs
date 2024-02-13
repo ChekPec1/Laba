@@ -13,13 +13,15 @@ namespace ConsoleApp51
     public class Music
     {
         public string MusicName { get; set; }
-        public List<string> avtors { get; set; }
-        public List<string> treak {  get; set; }
+        
+        public List<string> musics { get; set; }
       
-        public class Treak
+        public Music() 
         {
-           
+
+
         }
+      
     }
    
 
