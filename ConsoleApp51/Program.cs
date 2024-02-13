@@ -85,25 +85,33 @@ void MusicAdd()
 
         void MussicDelete()
         {
-            if (musics.Count == 0)
-    {
-        PrintRed("Вы еще не добавили ни одного трека");
-        return;
-    }
-            else if(musics.Count >= 1)
-    {
+    if (musics.Count() == null) return;
         PrintGreen("Выбери трек");
         musics.ForEach(treak => Console.WriteLine(treak));
-        PrintRed("Чтобы удалить введите слово: Удалить");
+    string delate = Console.ReadLine();
 
+    
+    PrintRed("Чтобы удалить введите слово: Удалить");
+        string s = Console.ReadLine();
+    if (s == null)
+    {
+        return;
     }
-            
+    
 
+    else if (s == "Удалить")
+    {
+        musics.Remove(delate);
+    }
+    
+    return;
+    
+       
 
         }
         void MusicsList()
         {
-             PrintGreen("Вот список всех добавленных треков:");
+        PrintGreen("Вот список всех добавленных треков:");
               musics.ForEach((treak) => Console.WriteLine(treak.ToString()));
     return;
         }
@@ -115,8 +123,19 @@ void MusicAdd()
         {
 
         }
-        void Avtors()
+        void MusicClear()
         {
+    PrintRed("Внимание, этот метод удалит все записи, для очистки всех записей напишите: Выполнить");
+    string a = Console.ReadLine();
+    if (a == "Выполнить")
+    {
+        musics.Clear();
+        PrintRed("Удаление всех списков завершенно");
+    }
+    else
+    {
+
+    }
 
         }
         void Activity()
