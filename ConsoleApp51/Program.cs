@@ -6,9 +6,9 @@ using System.Security.Cryptography.X509Certificates;
 
 using ConsoleApp51;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 
-   
-    void PrintGreen(string message)
+void PrintGreen(string message)
 {
     ConsoleColor color = Console.ForegroundColor;
     Console.ForegroundColor = ConsoleColor.Green;
@@ -75,69 +75,65 @@ while (true)
 }
 
 
+
 void MusicAdd()
 {
 
     PrintGreen("Напиши название");
     string treak = Console.ReadLine();
-    if (treak == null)
-    {
-        PrintRed("Не правильно!");
-    }
+        if (treak == "")
+        {
+            PrintRed("Не правильно!");
+
+
+        }
+   
     else
     {
         musics.Add(treak);
         PrintRed("Добавленно");
     }
-    return;
+    
 }
 
 
 void MussicDelete()
 {
-    foreach (string treak  in musics)
+   
+    foreach (string treak in musics)
     {
-        
-
         if (treak != null)
         {
-     
+
+
+            PrintGreen("Выбери трек");
+            musics.ForEach(treak => Console.WriteLine(treak));
+            string delate = Console.ReadLine();
+            PrintRed("Чтобы удалить введите слово: Удалить");
+            if (Console.ReadLine() == "Удалить")
+            {
+                musics.Remove(delate);
+                PrintRed("Выполнено");
+                break;
+            }
+            else if (Console.ReadLine() != "Удалить")
+            {
+                PrintRed("Операция не выполнена");
                 
-                    PrintGreen("Выбери трек");
-                    musics.ForEach(treak => Console.WriteLine(treak));
-                    string delate = Console.ReadLine();
-                    PrintRed("Чтобы удалить введите слово: Удалить");
-                    if (Console.ReadLine() == "Удалить")
-                    {
-                        musics.Remove(delate);
-                        PrintRed("Выполнено");
-                        return;
-                    }
-                    else if (Console.ReadLine() != "Удалить")
-                    {
-                        PrintRed("Операция не выполнена");
-                        return;
-                    }
-
-            
+            }
         }
-        else if (treak == null)
+        else
         {
-            PrintRed("У вас пока что нет треков");
-            return;
+            PrintRed("У вас еще нет треков");
         }
-
-
     }
-
-
-
+           
 }
 void MusicsList()
 {
     PrintGreen("Вот список всех добавленных треков:");
     musics.ForEach((treak) => Console.WriteLine(treak.ToString()));
-    return;
+    
 }
 void MussicDay()
 {
@@ -155,13 +151,14 @@ void Clear()
     {
         musics.Clear();
         PrintRed("Удаление всех списков завершенно");
+        
     }
     else if (Console.ReadLine() != "Выполнить")
     {
         PrintRed("Операция не выполнена");
-        return;
+        
     }
-    return;
+    
 
 }
 void Activity()
