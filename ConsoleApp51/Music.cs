@@ -12,6 +12,8 @@ namespace ConsoleApp51
 {
     public class Music
     {
+      
+
         public string MusicName { get; set; }
         
         public List<string> musics { get; set; }
