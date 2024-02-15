@@ -6,15 +6,14 @@ using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using System.Linq.Expressions;
 using System;
+using System.IO;
+
+List<string> musics = new();
 
 
 
-
-    
-    List<string> musics = new();
     void LoadListFromFile()
     {
-    LoadListFromFile();
     string _filePath = "musictracks.txt";
         if (File.Exists(_filePath))
         {
@@ -22,7 +21,15 @@ using System;
             PrintRed("Список треков загружен из файла");
         }
     }
-    void PrintGreen(string message)
+void SaveListToFile()
+{
+    string filePath = "musictracks.txt";
+    if (File.Exists(filePath) == false)
+        File.WriteAllLines(filePath, musics);
+    PrintRed("Список треков сохранен в файл");
+}
+
+void PrintGreen(string message)
     {
         ConsoleColor color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Green;
@@ -77,103 +84,72 @@ using System;
             case "5":
                 Commands();
                 break;
-        
-
-
-
         }
 
     }
-    void SaveListToFile()
+    
+void MusicAdd()
+{
+    PrintGreen("Напиши название");
+    string track = Console.ReadLine();
+    if (track == "")
     {
-        string filePath = "musictracks.txt";
-        File.WriteAllLines(filePath, musics);
-        PrintRed("Список треков сохранен в файл");
+        PrintRed("Не правильно!");
     }
-
-
-    void MusicAdd()
+    else
     {
-
-        PrintGreen("Напиши название");
-        string treak = Console.ReadLine();
-        if (treak == "")
+        musics.Add(track);
+        SaveListToFile(); 
+        PrintRed("Добавлено");
+    }
+}
+void MussicDelete()
+{
+    if (musics.Count == 0)
+    {
+        PrintRed("У вас еще нет треков");
+    }
+    else
+    {
+        PrintGreen("Выбери трек");
+        musics.ForEach(track => Console.WriteLine(track));
+        string delete = Console.ReadLine();
+        PrintRed("Чтобы удалить введите слово: Удалить");
+        if (Console.ReadLine() == "Удалить")
         {
-            PrintRed("Не правильно!");
-
-
-        }
-
-        else
-        {
-            musics.Add(treak);
-            PrintRed("Добавленно");
+            musics.Remove(delete);
+          
+            PrintRed("Выполнено");
             SaveListToFile();
         }
-
-    }
-
-
-    void MussicDelete()
-    {
-        if (musics.Count == 0)
-        {
-            PrintRed("У вас еще нет треков");
-        }
         else
         {
-            PrintGreen("Выбери трек");
-            musics.ForEach(track => Console.WriteLine(track));
-            string delete = Console.ReadLine();
-            PrintRed("Чтобы удалить введите слово: Удалить");
-            if (Console.ReadLine() == "Удалить")
-            {
-                musics.Remove(delete);
-                PrintRed("Выполнено");
-                SaveListToFile();
-            }
-            else
-            {
-                PrintRed("Операция не выполнена");
-            }
+            PrintRed("Операция не выполнена");
         }
     }
-
-
-
-
-    void MusicsList()
+}
+void MusicsList()
     {
         PrintGreen("Вот список всех добавленных треков:");
-        musics.ForEach((treak) => Console.WriteLine(treak.ToString()));
-
-    }
-    void MussicDay()
-    {
-
-    }
-    void MusicSave()
-    {
+        musics.ForEach((track) => Console.WriteLine(track.ToString()));
 
     }
     void Clear()
     {
-        PrintRed("Внимание, этот метод удалит все записи, для очистки всех записей напишите: Выполнить");
 
-        if (Console.ReadLine() == "Выполнить")
+    PrintRed("Внимание, этот метод удалит все записи, для очистки всех записей напишите: Выполнить");
+
+    if (Console.ReadLine() == "Выполнить")
         {
-            musics.Clear();
+        musics.Clear();
             PrintRed("Удаление всех списков завершенно");
         SaveListToFile();
-
     }
         else if (Console.ReadLine() != "Выполнить")
         {
             PrintRed("Операция не выполнена");
 
         }
-
-
     }
     void Commands()
     {
