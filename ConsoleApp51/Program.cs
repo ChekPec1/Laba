@@ -7,25 +7,29 @@ using Newtonsoft.Json;
 using System.Linq.Expressions;
 using System;
 using System.IO;
+using System;
+using System.Collections.Generic;
+
 
 List<string> musics = new();
 
 
-
-    void LoadListFromFile()
+    void LoadListFromFile()//Нужно вызывать этот метод в начале программы
     {
-    string _filePath = "musictracks.txt";
+        string _filePath = "musictracks.txt";
         if (File.Exists(_filePath))
         {
             musics = File.ReadAllLines(_filePath).ToList();
             PrintRed("Список треков загружен из файла");
         }
     }
+
+
+
 void SaveListToFile()
 {
     string filePath = "musictracks.txt";
-    if (File.Exists(filePath) == false)
-        File.WriteAllLines(filePath, musics);
+    File.WriteAllLines(filePath, musics);
     PrintRed("Список треков сохранен в файл");
 }
 
@@ -84,6 +88,7 @@ void PrintGreen(string message)
             case "5":
                 Commands();
                 break;
+            
         }
 
     }
@@ -161,7 +166,6 @@ void Exit()
     SaveListToFile();
     Environment.Exit(0);
 }
-
 
 
 
