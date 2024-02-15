@@ -13,8 +13,8 @@ using System.Collections.Generic;
 
 List<string> musics = new();
 
-
-    void LoadListFromFile()//Нужно вызывать этот метод в начале программы
+LoadListFromFile();
+    void LoadListFromFile()
     {
         string _filePath = "musictracks.txt";
         if (File.Exists(_filePath))
@@ -62,7 +62,7 @@ void PrintGreen(string message)
         Console.ForegroundColor = color;
     }
     PrintGreen("Привет, я программа которая расскажет тебе сколько ты слушаешь музыки и твою статистику");
-    PrintGreen("Вот список команд \n 0) Выход из программы \n 1)Добавление трека \n 2)Удаление трека \n 3)Список всех треков  \n 4)Очистить все записи \n 5)Help ");
+    PrintGreen("Вот список команд \n 0)Выход из программы \n 1)Добавление трека \n 2)Удаление трека \n 3)Список всех треков  \n 4)Очистить все записи \n 5)Help ");
 
 
 
@@ -158,7 +158,7 @@ void MusicsList()
     }
     void Commands()
     {
-        PrintGreen("Вот список команд \n 1)Добавление трека \n 2)Удаление трека \n 3)Список всех треков \n 4)Кол-во добавлений за определенный день \n 5)Статистика активности \n 6)Очистить все записи \n 7)Help ");
+        PrintGreen("\n 0)Выход из программы \n 1)Добавление трека \n 2)Удаление трека \n 3)Список всех треков  \n 4)Очистить все записи \n 5)Help ");
     }
 
 void Exit()
