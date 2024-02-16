@@ -23,6 +23,12 @@ LoadListFromFile();
             PrintRed("Список треков загружен из файла");
         }
     }
+string filePath = "musictracks.txt";
+if (!File.Exists(filePath))
+{
+    File.Create(filePath).Close();
+    PrintRed("Файл для хранения музыки создан");
+}
 
 
 
