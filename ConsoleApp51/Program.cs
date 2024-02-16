@@ -36,27 +36,13 @@ void SaveListToFile()
 {
     string filePath = "musictracks.txt";
     File.WriteAllLines(filePath, musics);
-    PrintRed("Список треков сохранен в файл");
+    
 }
 
 void PrintGreen(string message)
     {
         ConsoleColor color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(message);
-        Console.ForegroundColor = color;
-    }
-    void PrintPurple(string message)
-    {
-        ConsoleColor color = Console.ForegroundColor;
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(message);
-        Console.ForegroundColor = color;
-    }
-    void PrintBlue(string message)
-    {
-        ConsoleColor color = Console.ForegroundColor;
-        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(message);
         Console.ForegroundColor = color;
     }
@@ -71,10 +57,13 @@ void PrintGreen(string message)
     PrintGreen("Вот список команд \n 0)Выход из программы \n 1)Добавление трека \n 2)Удаление трека \n 3)Список всех треков  \n 4)Очистить все записи \n 5)Help ");
 
 
+AppDomain.CurrentDomain.ProcessExit += (_, _) => SaveListToFile();
 
-    while (true)
+while (true)
     {
-        switch (Console.ReadLine())
+    Console.Write("> ");
+    string input = Console.ReadLine();
+    switch (input)
         {
         case "0":
             Exit();
@@ -94,6 +83,9 @@ void PrintGreen(string message)
             case "5":
                 Commands();
                 break;
+        default:
+            PrintRed("Неверная команда!");
+            break;
             
         }
 
@@ -169,6 +161,7 @@ void MusicsList()
 
 void Exit()
 {
+    PrintGreen("Пока(");
     SaveListToFile();
     Environment.Exit(0);
 }
